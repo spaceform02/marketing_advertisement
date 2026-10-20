@@ -1,0 +1,83 @@
+version: 2
+
+sources:
+  - name: snapchat_ads
+    description: "Raw Snapchat Ads data ingested from Google Drive."
+    database: marketing_prod
+    schema: raw
+    config:
+      enabled: true
+      freshness:
+        warn_after:
+          count: 2
+          period: day
+
+    tables:
+      - name: ads_stat
+        description: "Fact table containing Snapchat ad performance metrics and dimensions."
+        identifier: snapchat_ads_stats
+        config:
+          enabled: true
+          event_time: ad_date
+        columns:
+          - name: ad_detail_id
+            description: "Unique identifier for the ad detail record."
+          - name: ad_currency_code
+            description: "Currency code used for the ad spend."
+          - name: data_country
+            description: "Country code associated with the performance data."
+          - name: ad_spend
+            description: "Amount spent on the Snapchat ad."
+          - name: ad_impressions
+            description: "Number of impressions received."
+          - name: ad_clicks
+            description: "Number of clicks received."
+          - name: ad_date
+            description: "Date associated with the ad performance record."
+          - name: date_src
+            description: "Source date attribute for tracking."
+
+      - name: ads
+        description: "Ad dimension history containing Snapchat ad attributes."
+        identifier: snapchat_ads_ad_history_new_ad_names
+        config:
+          enabled: true
+          event_time: ad_detail_updated_at
+        columns:
+          - name: ad_id
+            description: "Unique identifier for the advertisement."
+          - name: ad_group_id
+            description: "Identifier of the ad group associated with the ad."
+          - name: ad_name
+            description: "Name of the advertisement."
+          - name: ad_detail_updated_at
+            description: "Timestamp when the ad record was last updated."
+
+      - name: adgroup
+        description: "Ad group dimension history containing Snapchat ad group attributes."
+        identifier: snapchat_ads_adgroup_history_new_ad_group_names
+        config:
+          enabled: true
+          event_time: ad_group_updated_at
+        columns:
+          - name: surrogate_key
+            description: "Surrogate key for the ad group history record."
+          - name: ad_group_id
+            description: "Unique identifier for the ad group."
+          - name: campaign_id
+            description: "Identifier of the campaign associated with the ad group."
+          - name: ad_group_name
+            description: "Name of the ad group."
+          - name: ad_group_updated_at
+            description: "Timestamp when the ad group record was last updated."
+
+      - name: campaign
+        description: "Campaign dimension history containing Snapchat campaign attributes."
+        identifier: snapchat_ads_campaign_history_new_campaign_names
+        columns:
+          - name: campaign_id
+            description: "Unique identifier for the campaign."
+          - name: account_id
+            description: "Identifier of the advertising account."
+          - name: campaign_name
+            description: "Name of the advertising campaign."

@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: facts__agg_campaign
+    description: "Aggregated ad performance metrics grouped by campaign name and currency."
+    columns:
+      - name: campaign_name
+        description: "The name of the advertising campaign."
+        tests:
+          - not_null
+      - name: currency
+        description: "The currency code associated with the ad spend."
+        tests:
+          - not_null
+      - name: total_spend
+        description: "Total monetary amount spent for the campaign in the specified currency."
+        tests:
+          - not_null
+      - name: total_impressions
+        description: "Total number of times the campaign ads were displayed."
+      - name: total_clicks
+        description: "Total number of clicks the campaign ads received."
+      - name: ctr
+        description: "Click-Through Rate (clicks / impressions) for the campaign."
+      - name: cpc
+        description: "Cost Per Click (spend / clicks) for the campaign."
+      - name: cpm
+        description: "Cost Per Mille ((spend / impressions) * 1000) for the campaign."
+
+  - name: facts__agg_platform
+    description: "Aggregated ad performance metrics grouped by data source (platform) and currency."
+    columns:
+      - name: data_source
+        description: "The source platform of the ad data (e.g., facebook, snapchat)."
+        tests:
+          - not_null
+      - name: currency
+        description: "The currency code associated with the ad spend."
+        tests:
+          - not_null
+      - name: total_spend
+        description: "Total monetary amount spent on the platform in the specified currency."
+        tests:
+          - not_null
+      - name: total_impressions
+        description: "Total number of times the platform ads were displayed."
+      - name: total_clicks
+        description: "Total number of clicks the platform ads received."
+      - name: ctr
+        description: "Click-Through Rate (clicks / impressions) for the platform."
+      - name: cpc
+        description: "Cost Per Click (spend / clicks) for the platform."
+      - name: cpm
+        description: "Cost Per Mille ((spend / impressions) * 1000) for the platform."

@@ -1,0 +1,601 @@
+2026-10-14 00:32:35 — INFO — Running with edr=0.26.1
+2026-10-14 00:32:38 — DEBUG — profiles.yml not found at /home/spaceform/.dbt/profiles.yml
+2026-10-14 00:32:38 — INFO — Installing packages for edr internal dbt package...
+2026-10-14 00:32:38 — INFO — Running dbt command --log-format json deps --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project
+2026-10-14 00:32:42 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project
+[31;20m2026-10-14 00:32:42 — ERROR — Unable to get the latest invocation: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'[0m
+2026-10-14 00:32:42 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project
+2026-10-14 00:32:43 — DEBUG — Could not get warehouse info.
+Traceback (most recent call last):
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/data_monitoring/data_monitoring.py", line 139, in _get_warehouse_info
+    self.internal_dbt_runner.run_operation(
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 369, in run_operation
+    result = self._run_command(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 227, in _run_command
+    return self._inner_run_command_with_retries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 404, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 550, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 440, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 462, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 553, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 264, in _inner_run_command_with_retries
+    result = self._inner_run_command(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 59, in _inner_run_command
+    raise DbtCommandError(
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2026-10-14 00:32:43 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project
+[31;20m2026-10-14 00:32:43 — ERROR — Failed to parse Elementary's database and schema.[0m
+2026-10-14 00:32:43 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false, "skip_test_result_rows": false}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project
+[31;20m2026-10-14 00:32:44 — ERROR — Could not generate the report - Error: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+Please reach out to our community for help with this issue.[0m
+Traceback (most recent call last):
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/report/report.py", line 85, in get_report_data
+    tests_api = TestsAPI(
+                ^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/tests/tests.py", line 53, in __init__
+    self.test_results_db_rows = self._get_test_results_db_rows(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/tests/tests.py", line 67, in _get_test_results_db_rows
+    return self.tests_fetcher.get_all_test_results_db_rows(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/fetchers/tests/tests.py", line 27, in get_all_test_results_db_rows
+    run_operation_response = self.dbt_runner.run_operation(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 369, in run_operation
+    result = self._run_command(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 227, in _run_command
+    return self._inner_run_command_with_retries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 404, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 550, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 440, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 462, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 553, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 264, in _inner_run_command_with_retries
+    result = self._inner_run_command(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 59, in _inner_run_command
+    raise DbtCommandError(
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2026-10-14 00:35:26 — INFO — Running with edr=0.26.1
+2026-10-14 00:35:29 — DEBUG — profiles.yml not found at /home/spaceform/.dbt/profiles.yml
+2026-10-14 00:35:29 — DEBUG — profiles.yml not found at /home/spaceform/.dbt/profiles.yml
+2026-10-14 00:35:29 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project --profiles-dir /home/spaceform/.dbt
+[31;20m2026-10-14 00:35:29 — ERROR — Unable to get the latest invocation: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'[0m
+2026-10-14 00:35:30 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project --profiles-dir /home/spaceform/.dbt
+2026-10-14 00:35:30 — DEBUG — Could not get warehouse info.
+Traceback (most recent call last):
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/data_monitoring/data_monitoring.py", line 139, in _get_warehouse_info
+    self.internal_dbt_runner.run_operation(
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 369, in run_operation
+    result = self._run_command(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 227, in _run_command
+    return self._inner_run_command_with_retries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 404, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 550, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 440, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 462, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 553, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 264, in _inner_run_command_with_retries
+    result = self._inner_run_command(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 59, in _inner_run_command
+    raise DbtCommandError(
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2026-10-14 00:35:30 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project --profiles-dir /home/spaceform/.dbt
+[31;20m2026-10-14 00:35:31 — ERROR — Failed to parse Elementary's database and schema.[0m
+2026-10-14 00:35:31 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false, "skip_test_result_rows": false}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project --profiles-dir /home/spaceform/.dbt
+[31;20m2026-10-14 00:35:31 — ERROR — Could not generate the report - Error: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+Please reach out to our community for help with this issue.[0m
+Traceback (most recent call last):
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/report/report.py", line 85, in get_report_data
+    tests_api = TestsAPI(
+                ^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/tests/tests.py", line 53, in __init__
+    self.test_results_db_rows = self._get_test_results_db_rows(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/tests/tests.py", line 67, in _get_test_results_db_rows
+    return self.tests_fetcher.get_all_test_results_db_rows(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/fetchers/tests/tests.py", line 27, in get_all_test_results_db_rows
+    run_operation_response = self.dbt_runner.run_operation(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 369, in run_operation
+    result = self._run_command(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 227, in _run_command
+    return self._inner_run_command_with_retries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 404, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 550, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 440, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 462, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 553, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 264, in _inner_run_command_with_retries
+    result = self._inner_run_command(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 59, in _inner_run_command
+    raise DbtCommandError(
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2026-10-14 00:38:16 — INFO — Running with edr=0.26.1
+2026-10-14 00:45:03 — INFO — Running with edr=0.26.1
+2026-10-14 00:45:06 — DEBUG — profiles.yml not found at /home/spaceform/.dbt/profiles.yml
+2026-10-14 00:45:06 — DEBUG — profiles.yml not found at /home/spaceform/.dbt/profiles.yml
+2026-10-14 00:45:06 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project --profiles-dir /home/spaceform/.dbt
+[31;20m2026-10-14 00:45:06 — ERROR — Unable to get the latest invocation: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'[0m
+2026-10-14 00:45:06 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project --profiles-dir /home/spaceform/.dbt
+2026-10-14 00:45:07 — DEBUG — Could not get warehouse info.
+Traceback (most recent call last):
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/data_monitoring/data_monitoring.py", line 139, in _get_warehouse_info
+    self.internal_dbt_runner.run_operation(
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 369, in run_operation
+    result = self._run_command(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 227, in _run_command
+    return self._inner_run_command_with_retries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 404, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 550, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 440, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 462, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 553, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 264, in _inner_run_command_with_retries
+    result = self._inner_run_command(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 59, in _inner_run_command
+    raise DbtCommandError(
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2026-10-14 00:45:07 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project --profiles-dir /home/spaceform/.dbt
+[31;20m2026-10-14 00:45:07 — ERROR — Failed to parse Elementary's database and schema.[0m
+2026-10-14 00:45:07 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false, "skip_test_result_rows": false}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project --profiles-dir /home/spaceform/.dbt
+[31;20m2026-10-14 00:45:08 — ERROR — Could not generate the report - Error: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+Please reach out to our community for help with this issue.[0m
+Traceback (most recent call last):
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/report/report.py", line 85, in get_report_data
+    tests_api = TestsAPI(
+                ^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/tests/tests.py", line 53, in __init__
+    self.test_results_db_rows = self._get_test_results_db_rows(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/tests/tests.py", line 67, in _get_test_results_db_rows
+    return self.tests_fetcher.get_all_test_results_db_rows(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/fetchers/tests/tests.py", line 27, in get_all_test_results_db_rows
+    run_operation_response = self.dbt_runner.run_operation(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 369, in run_operation
+    result = self._run_command(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 227, in _run_command
+    return self._inner_run_command_with_retries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 404, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 550, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 440, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 462, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 553, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 264, in _inner_run_command_with_retries
+    result = self._inner_run_command(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 59, in _inner_run_command
+    raise DbtCommandError(
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2026-10-14 00:52:35 — INFO — Running with edr=0.26.1
+2026-10-14 00:58:16 — INFO — Running with edr=0.26.1
+2026-10-14 00:58:19 — DEBUG — profiles.yml not found at /home/spaceform/.dbt/profiles.yml
+2026-10-14 00:58:19 — DEBUG — profiles.yml not found at /home/spaceform/.dbt/profiles.yml
+2026-10-14 00:58:19 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project --profiles-dir /home/spaceform/.dbt --target dev
+[31;20m2026-10-14 00:58:19 — ERROR — Unable to get the latest invocation: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'[0m
+2026-10-14 00:58:19 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project --profiles-dir /home/spaceform/.dbt --target dev
+2026-10-14 00:58:20 — DEBUG — Could not get warehouse info.
+Traceback (most recent call last):
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/data_monitoring/data_monitoring.py", line 139, in _get_warehouse_info
+    self.internal_dbt_runner.run_operation(
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 369, in run_operation
+    result = self._run_command(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 227, in _run_command
+    return self._inner_run_command_with_retries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 404, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 550, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 440, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 462, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 553, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 264, in _inner_run_command_with_retries
+    result = self._inner_run_command(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 59, in _inner_run_command
+    raise DbtCommandError(
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2026-10-14 00:58:20 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project --profiles-dir /home/spaceform/.dbt --target dev
+[31;20m2026-10-14 00:58:21 — ERROR — Failed to parse Elementary's database and schema.[0m
+2026-10-14 00:58:21 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false, "skip_test_result_rows": false}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project --profiles-dir /home/spaceform/.dbt --target dev
+[31;20m2026-10-14 00:58:21 — ERROR — Could not generate the report - Error: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+Please reach out to our community for help with this issue.[0m
+Traceback (most recent call last):
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/report/report.py", line 85, in get_report_data
+    tests_api = TestsAPI(
+                ^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/tests/tests.py", line 53, in __init__
+    self.test_results_db_rows = self._get_test_results_db_rows(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/tests/tests.py", line 67, in _get_test_results_db_rows
+    return self.tests_fetcher.get_all_test_results_db_rows(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/fetchers/tests/tests.py", line 27, in get_all_test_results_db_rows
+    run_operation_response = self.dbt_runner.run_operation(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 369, in run_operation
+    result = self._run_command(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 227, in _run_command
+    return self._inner_run_command_with_retries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 404, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 550, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 440, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 462, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 553, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 264, in _inner_run_command_with_retries
+    result = self._inner_run_command(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 59, in _inner_run_command
+    raise DbtCommandError(
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2026-10-14 01:06:53 — INFO — Running with edr=0.26.1
+2026-10-14 01:06:55 — DEBUG — profiles.yml not found at /home/spaceform/.dbt/profiles.yml
+2026-10-14 01:06:55 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project
+[31;20m2026-10-14 01:06:56 — ERROR — Unable to get the latest invocation: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'[0m
+2026-10-14 01:06:56 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project
+2026-10-14 01:06:57 — DEBUG — Could not get warehouse info.
+Traceback (most recent call last):
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/data_monitoring/data_monitoring.py", line 139, in _get_warehouse_info
+    self.internal_dbt_runner.run_operation(
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 369, in run_operation
+    result = self._run_command(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 227, in _run_command
+    return self._inner_run_command_with_retries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 404, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 550, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 440, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 462, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 553, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 264, in _inner_run_command_with_retries
+    result = self._inner_run_command(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 59, in _inner_run_command
+    raise DbtCommandError(
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2026-10-14 01:06:57 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project
+[31;20m2026-10-14 01:06:57 — ERROR — Failed to parse Elementary's database and schema.[0m
+2026-10-14 01:06:57 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false, "skip_test_result_rows": false}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project
+[31;20m2026-10-14 01:06:58 — ERROR — Could not generate the report - Error: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+Please reach out to our community for help with this issue.[0m
+Traceback (most recent call last):
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/report/report.py", line 85, in get_report_data
+    tests_api = TestsAPI(
+                ^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/tests/tests.py", line 53, in __init__
+    self.test_results_db_rows = self._get_test_results_db_rows(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/tests/tests.py", line 67, in _get_test_results_db_rows
+    return self.tests_fetcher.get_all_test_results_db_rows(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/fetchers/tests/tests.py", line 27, in get_all_test_results_db_rows
+    run_operation_response = self.dbt_runner.run_operation(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 369, in run_operation
+    result = self._run_command(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 227, in _run_command
+    return self._inner_run_command_with_retries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 404, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 550, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 440, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 462, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 553, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 264, in _inner_run_command_with_retries
+    result = self._inner_run_command(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 59, in _inner_run_command
+    raise DbtCommandError(
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2026-10-14 01:15:40 — INFO — Running with edr=0.26.1
+2026-10-14 01:15:42 — DEBUG — profiles.yml not found at /home/spaceform/.dbt/profiles.yml
+2026-10-14 01:15:42 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_latest_invocation", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project
+[31;20m2026-10-14 01:15:43 — ERROR — Unable to get the latest invocation: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'[0m
+2026-10-14 01:15:43 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_adapter_type_and_unique_id", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project
+2026-10-14 01:15:44 — DEBUG — Could not get warehouse info.
+Traceback (most recent call last):
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/data_monitoring/data_monitoring.py", line 139, in _get_warehouse_info
+    self.internal_dbt_runner.run_operation(
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 369, in run_operation
+    result = self._run_command(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 227, in _run_command
+    return self._inner_run_command_with_retries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 404, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 550, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 440, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 462, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 553, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 264, in _inner_run_command_with_retries
+    result = self._inner_run_command(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 59, in _inner_run_command
+    raise DbtCommandError(
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+2026-10-14 01:15:44 — DEBUG — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_elementary_database_and_schema", "macro_args": {}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project
+[31;20m2026-10-14 01:15:44 — ERROR — Failed to parse Elementary's database and schema.[0m
+2026-10-14 01:15:44 — INFO — Running dbt command --log-format json run-operation elementary.log_macro_results --args {"macro_name": "elementary_cli.get_test_results", "macro_args": {"days_back": 7, "invocations_per_test": 720, "disable_passed_test_metrics": false, "skip_test_result_rows": false}} --project-dir /home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/dbt_project
+[31;20m2026-10-14 01:15:45 — ERROR — Could not generate the report - Error: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'
+Please reach out to our community for help with this issue.[0m
+Traceback (most recent call last):
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/report/report.py", line 85, in get_report_data
+    tests_api = TestsAPI(
+                ^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/tests/tests.py", line 53, in __init__
+    self.test_results_db_rows = self._get_test_results_db_rows(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/api/tests/tests.py", line 67, in _get_test_results_db_rows
+    return self.tests_fetcher.get_all_test_results_db_rows(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/monitor/fetchers/tests/tests.py", line 27, in get_all_test_results_db_rows
+    run_operation_response = self.dbt_runner.run_operation(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 369, in run_operation
+    result = self._run_command(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 227, in _run_command
+    return self._inner_run_command_with_retries(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 404, in wrapped_f
+    return copy(f, *args, **kw)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 550, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 440, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 462, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 553, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/command_line_dbt_runner.py", line 264, in _inner_run_command_with_retries
+    result = self._inner_run_command(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spaceform/marketing_analytics_dbt/.venv/lib/python3.12/site-packages/elementary/clients/dbt/api_dbt_runner.py", line 59, in _inner_run_command
+    raise DbtCommandError(
+elementary.exceptions.exceptions.DbtCommandError: Failed to run dbt command.
+Runtime Error
+  Could not find profile named 'elementary'

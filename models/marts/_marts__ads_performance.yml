@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: marts__ads_performance 
+    description: "A consolidated facts table containing ad performance metrics (spend, impressions, clicks) and descriptive dimensions (campaign name, currency) across Facebook and Snapchat."
+    columns:
+      - name: ad_id
+        description: "The unique identifier for the ad."
+        tests:
+          - not_null
+      - name: campaign_name
+        description: "The name of the campaign associated with the ad."
+      - name: spend
+        description: "The monetary amount spent on the ad."
+        tests:
+            - not_null
+      - name: impressions
+        description: "The total number of times the ad was displayed."
+        tests:
+            - not_null
+      - name: clicks
+        description: "The total number of clicks the ad received."
+        tests:
+            - not_null
+      - name: currency
+        description: "The currency code associated with the ad spend."
+        tests:
+          - not_null
+      - name: ad_date
+        description: "The date the ad performance metrics were recorded."
+        tests:
+          - not_null
+      - name: data_source
+        description: "The source platform of the ad data (e.g., facebook, snapchat)."
+        tests:
+          - not_null
